@@ -1,7 +1,9 @@
-Aplikasi PeduliDiri
+<h1>Aplikasi PeduliDiri</h1>
 
 Aplikasi ini dibangun dengan menggunakan Framework CodeIgniter 4, dengan berdasar pada soal UKK RPL tahun 2021/2022 Paket soal ke-1.
 
-<h1>System Requirements</h1>
-1. PHP Versi 7.4 (Keatas)
-2. Itu aja kayanya, karena gapake database
+<h4>System Requirements</h4>
+<ol> 
+<li>PHP Versi 7.4 (Keatas)</li>
+<li>Itu aja kayanya, karena gapake database</li>
+</ol>
