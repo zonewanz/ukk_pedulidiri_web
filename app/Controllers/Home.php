@@ -61,6 +61,9 @@ class Home extends BaseController
         if ($cek) {
             session()->set('nik', $pisah['0']);
             session()->set('nama', $pisah['1']);
+            session()->set('berhasil', "Login Berhasil");
+            $session = session();
+            $session->markAsFlashdata('berhasil');
             return redirect()->to(base_url('dashboard'));
         } else {
 

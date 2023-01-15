@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
 
-    <title>Dashboard | Aplikasi PeduliDiri</title>
+    <title>Catat Perjalanan | Aplikasi PeduliDiri</title>
 
     <meta name="description" content="" />
 
@@ -19,7 +19,6 @@
 
     <!-- Icons. Uncomment required icon fonts -->
     <link rel="stylesheet" href="tema/assets/vendor/fonts/boxicons.css" />
-    <link rel="stylesheet" href="tema/assets/sweetalert2/dist/sweetalert2.min.css">
 
     <!-- Core CSS -->
     <link rel="stylesheet" href="tema/assets/vendor/css/core.css" class="template-customizer-core-css" />
@@ -96,14 +95,14 @@
 
                 <ul class="menu-inner py-1">
                     <!-- Dashboard -->
-                    <li class="menu-item active">
+                    <li class="menu-item ">
                         <a href="dashboard" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-home-circle"></i>
                             <div data-i18n="Analytics">Dashboard</div>
                         </a>
                     </li>
 
-                    <li class="menu-item">
+                    <li class="menu-item active">
                         <a href="catatan" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-notepad"></i>
                             <div data-i18n="Analytics">Tulis Catatan</div>
@@ -206,102 +205,79 @@
 
                     <div class="container-xxl flex-grow-1 container-p-y">
                         <div class="row">
-                            <div class="col-lg-12 mb-4 order-0">
-                                <div class="card">
-                                    <div class="d-flex align-items-end row">
-                                        <div class="col-sm-7">
-                                            <div class="card-body">
-                                                <h5 class="card-title text-primary">Selamat Datang <span class="fw-bold"><?= session('nama'); ?></span>!</h5>
-                                                <p class="mb-4">
-                                                    Melalui gerakan PeduliDiri, ayo sama-sama kita sadar sejak dini terhadap kesehatan kita untuk masa depan yang lebih baik.
-                                                </p>
-
-                                                <a href="catatan" class="btn btn-sm btn-outline-primary">Mulai Aplikasi</a>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-5 text-center text-sm-left">
-                                            <div class="card-body pb-0 px-0 px-md-4">
-                                                <img src="tema/assets/img/illustrations/man-with-laptop-light.png" height="140" alt="View Badge User" data-app-dark-img="illustrations/man-with-laptop-dark.png" data-app-light-img="illustrations/man-with-laptop-light.png" />
-                                            </div>
-                                        </div>
+                            <!-- Basic Layout -->
+                            <div class="col-xxl">
+                                <div class="card mb-4">
+                                    <div class="card-header d-flex align-items-center justify-content-between">
+                                        <h5 class="mb-0">Catatan Perjalanan</h5>
+                                        <small class="text-muted float-end"><a href="<?= base_url(); ?>"> dashboard</a> / catatan</small>
                                     </div>
-                                </div>
-                            </div>
-                        </div>
+                                    <div class="card-body">
+                                        <form action="simpan_catatan" method="POST">
+                                            <div class="row mb-3">
+                                                <label class="col-sm-2 col-form-label" for="basic-default-name">Tanggal</label>
+                                                <div class="col-sm-10">
+                                                    <input type="date" class="form-control" id="tanggal" name="tanggal" required />
+                                                </div>
+                                            </div>
+                                            <div class="row mb-3">
+                                                <label class="col-sm-2 col-form-label" for="basic-default-company">Jam</label>
+                                                <div class="col-sm-10">
+                                                    <input type="time" class="form-control" id="jam" name="jam" />
+                                                </div>
+                                            </div>
 
-                        <div class="row">
-                            <div class="col-lg-12 mb-4 order-0">
-                                <h5 class="pb-1 mb-4">Informasi Kesehatan (dummy)</h5>
-                                <div class="row mb-5">
-                                    <div class="col-md">
-                                        <div class="card mb-3">
-                                            <div class="row g-0">
-                                                <div class="col-md-4">
-                                                    <img class="card-img card-img-left" src="tema/assets/img/elements/12.jpg" alt="Card image" />
-                                                </div>
-                                                <div class="col-md-8">
-                                                    <div class="card-body">
-                                                        <h5 class="card-title">Dekorasi Rumah untuk Kesehatan Mental</h5>
-                                                        <p class="card-text">
-                                                            Memang untuk membuat dekorasi rumah bagi sebagian orang merupakan hal yang rumit, begitupun menurut saya.
-                                                        </p>
-                                                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                                                    </div>
+                                            <div class="row mb-3">
+                                                <label class="col-sm-2 col-form-label" for="basic-default-phone">Lokasi</label>
+                                                <div class="col-sm-10">
+                                                    <input type="text" id="lokasi" class="form-control phone-mask" aria-describedby="basic-default-phone" name="lokasi" />
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md">
-                                        <div class="card mb-3">
-                                            <div class="row g-0">
-                                                <div class="col-md-8">
-                                                    <div class="card-body">
-                                                        <h5 class="card-title">Manfaat Buah Alpukat</h5>
-                                                        <p class="card-text">
-                                                            Alpukat dipercaya dapat membuat wajah seseorang dapat terlihat muda 10 tahun, apabila di konsumsi ketika 10 tahun yang lalu.
-                                                        </p>
-                                                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <img class="card-img card-img-right" src="tema/assets/img/elements/17.jpg" alt="Card image" />
+                                            <div class="row mb-3">
+                                                <label class="col-sm-2 col-form-label" for="basic-default-phone">Suhu Tubuh</label>
+                                                <div class="col-sm-10">
+                                                    <input type="number" id="suhu" class="form-control phone-mask" aria-describedby="basic-default-phone" name="suhu" placeholder="Suhu Tubuh (Celcius)" />
                                                 </div>
                                             </div>
-                                        </div>
+
+                                            <div class="row justify-content-end">
+                                                <div class="col-sm-10">
+                                                    <input type="submit" class="btn btn-primary" name="simpan" value="Simpan">
+                                                </div>
+                                            </div>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <!-- / Content -->
+
+                    <!-- Footer -->
+                    <footer class="content-footer footer bg-footer-theme">
+                        <div class="container-xxl d-flex flex-wrap justify-content-between py-2 flex-md-row flex-column">
+                            <div class="mb-2 mb-md-0">
+                                ©
+                                <script>
+                                    document.write(new Date().getFullYear());
+                                </script>
+                                , made with ❤️ by
+                                <a href="https://github.com/zonewanz" target="_blank" class="footer-link fw-bolder">Oren's Solution</a>
+                            </div>
+
+                        </div>
+                    </footer>
+                    <!-- / Footer -->
+
+                    <div class="content-backdrop fade"></div>
                 </div>
-
-                <!-- / Content -->
-
-                <!-- Footer -->
-                <footer class="content-footer footer bg-footer-theme">
-                    <div class="container-xxl d-flex flex-wrap justify-content-between py-2 flex-md-row flex-column">
-                        <div class="mb-2 mb-md-0">
-                            ©
-                            <script>
-                                document.write(new Date().getFullYear());
-                            </script>
-                            , made with ❤️ by
-                            <a href="https://github.com/zonewanz" target="_blank" class="footer-link fw-bolder">Oren's Solution</a>
-                        </div>
-
-                    </div>
-                </footer>
-                <!-- / Footer -->
-
-                <div class="content-backdrop fade"></div>
+                <!-- Content wrapper -->
             </div>
-            <!-- Content wrapper -->
+            <!-- / Layout page -->
         </div>
-        <!-- / Layout page -->
-    </div>
 
-    <!-- Overlay -->
-    <div class="layout-overlay layout-menu-toggle"></div>
+        <!-- Overlay -->
+        <div class="layout-overlay layout-menu-toggle"></div>
     </div>
     <!-- / Layout wrapper -->
 
@@ -328,28 +304,6 @@
 
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
-
-    <script src="tema/assets/sweetalert2/dist/sweetalert2.all.min.js"></script>
-    <?php if (session()->getFlashdata('berhasil')) { ?>
-        <script>
-            const Toast = Swal.mixin({
-                toast: true,
-                position: 'top-end',
-                showConfirmButton: false,
-                timer: 3000,
-                timerProgressBar: true,
-                didOpen: (toast) => {
-                    toast.addEventListener('mouseenter', Swal.stopTimer)
-                    toast.addEventListener('mouseleave', Swal.resumeTimer)
-                }
-            })
-
-            Toast.fire({
-                icon: 'success',
-                title: 'Login Berhasil!'
-            })
-        </script>
-    <?php } ?>
 </body>
 
 </html>

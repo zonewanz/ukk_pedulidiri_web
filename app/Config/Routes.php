@@ -36,6 +36,9 @@ $routes->post('/proses_register', 'Home::proses_register');
 $routes->get('/login', 'Home::index');
 $routes->get('/logout', 'Home::logout');
 $routes->get('/dashboard', 'User::index');
+$routes->get('/riwayat', 'User::riwayat');
+$routes->get('/catatan', 'User::catatan');
+$routes->post('/simpan_catatan', 'User::simpan_catatan');
 
 /*
  * --------------------------------------------------------------------

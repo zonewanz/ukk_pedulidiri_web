@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
 
-    <title>Dashboard | Aplikasi PeduliDiri</title>
+    <title>Riwayat Perjalanan | Aplikasi PeduliDiri</title>
 
     <meta name="description" content="" />
 
@@ -19,7 +19,6 @@
 
     <!-- Icons. Uncomment required icon fonts -->
     <link rel="stylesheet" href="tema/assets/vendor/fonts/boxicons.css" />
-    <link rel="stylesheet" href="tema/assets/sweetalert2/dist/sweetalert2.min.css">
 
     <!-- Core CSS -->
     <link rel="stylesheet" href="tema/assets/vendor/css/core.css" class="template-customizer-core-css" />
@@ -32,10 +31,10 @@
     <link rel="stylesheet" href="tema/assets/vendor/libs/apex-charts/apex-charts.css" />
 
     <!-- Page CSS -->
-
+    <link rel="stylesheet" href="tema/assets/datatables.min.css">
     <!-- Helpers -->
     <script src="tema/assets/vendor/js/helpers.js"></script>
-
+    <link rel="stylesheet" href="tema/assets/sweetalert2/dist/sweetalert2.min.css">
     <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
     <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
     <script src="tema/assets/js/config.js"></script>
@@ -96,21 +95,21 @@
 
                 <ul class="menu-inner py-1">
                     <!-- Dashboard -->
-                    <li class="menu-item active">
+                    <li class="menu-item ">
                         <a href="dashboard" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-home-circle"></i>
                             <div data-i18n="Analytics">Dashboard</div>
                         </a>
                     </li>
 
-                    <li class="menu-item">
+                    <li class="menu-item ">
                         <a href="catatan" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-notepad"></i>
                             <div data-i18n="Analytics">Tulis Catatan</div>
                         </a>
                     </li>
 
-                    <li class="menu-item">
+                    <li class="menu-item active">
                         <a href="riwayat" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-note"></i>
                             <div data-i18n="Analytics">Riwayat Perjalanan</div>
@@ -206,102 +205,93 @@
 
                     <div class="container-xxl flex-grow-1 container-p-y">
                         <div class="row">
-                            <div class="col-lg-12 mb-4 order-0">
+                            <div class="col-xxl">
                                 <div class="card">
-                                    <div class="d-flex align-items-end row">
-                                        <div class="col-sm-7">
-                                            <div class="card-body">
-                                                <h5 class="card-title text-primary">Selamat Datang <span class="fw-bold"><?= session('nama'); ?></span>!</h5>
-                                                <p class="mb-4">
-                                                    Melalui gerakan PeduliDiri, ayo sama-sama kita sadar sejak dini terhadap kesehatan kita untuk masa depan yang lebih baik.
-                                                </p>
+                                    <h5 class="card-header">Riwayat Perjalanan <small class="text-muted float-end"><a href="<?= base_url(); ?>"> dashboard</a> / riwayat</small></h5>
 
-                                                <a href="catatan" class="btn btn-sm btn-outline-primary">Mulai Aplikasi</a>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-5 text-center text-sm-left">
-                                            <div class="card-body pb-0 px-0 px-md-4">
-                                                <img src="tema/assets/img/illustrations/man-with-laptop-light.png" height="140" alt="View Badge User" data-app-dark-img="illustrations/man-with-laptop-dark.png" data-app-light-img="illustrations/man-with-laptop-light.png" />
-                                            </div>
-                                        </div>
+                                    <div class="table-responsive text-nowrap pb-5">
+                                        <table class="table table-hover table-md" id="table-1">
+                                            <thead>
+                                                <tr>
+                                                    <th>No</th>
+                                                    <th>Tanggal</th>
+                                                    <th>Jam</th>
+                                                    <th>Lokasi Berkunjung</th>
+                                                    <th>Suhu Tubuh</th>
+                                                    <!-- <th>Actions</th> -->
+                                                </tr>
+                                            </thead>
+                                            <tbody class="table-border-bottom-0">
+                                                <?php
+                                                $user = session('nik');
+                                                $no = 1;
+                                                foreach ($data as $value) {
+                                                    $pisah = explode("|", $value);
+                                                    $key = $pisah['0'];
+                                                    if ($user == $key) {
+
+                                                ?>
+                                                        <tr>
+                                                            <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <?= $no++; ?></td>
+                                                            <td><?= $pisah['2']; ?></td>
+                                                            <td>
+                                                                <?= $pisah['3']; ?>
+                                                            </td>
+                                                            <td>
+                                                                <?= $pisah['4']; ?>
+                                                            </td>
+                                                            <td><?= $pisah['5']; ?></td>
+                                                            <!-- <td>
+                                                                <div class="dropdown">
+                                                                    <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                                                                        <i class="bx bx-dots-vertical-rounded"></i>
+                                                                    </button>
+                                                                    <div class="dropdown-menu">
+                                                                        <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-edit-alt me-1"></i> Edit</a>
+                                                                        <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-trash me-1"></i> Delete</a>
+                                                                    </div>
+                                                                </div>
+                                                            </td> -->
+                                                        </tr>
+                                                <?php }
+                                                } ?>
+                                            </tbody>
+                                        </table>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                            <!--/ Hoverable Table rows -->
 
-                        <div class="row">
-                            <div class="col-lg-12 mb-4 order-0">
-                                <h5 class="pb-1 mb-4">Informasi Kesehatan (dummy)</h5>
-                                <div class="row mb-5">
-                                    <div class="col-md">
-                                        <div class="card mb-3">
-                                            <div class="row g-0">
-                                                <div class="col-md-4">
-                                                    <img class="card-img card-img-left" src="tema/assets/img/elements/12.jpg" alt="Card image" />
-                                                </div>
-                                                <div class="col-md-8">
-                                                    <div class="card-body">
-                                                        <h5 class="card-title">Dekorasi Rumah untuk Kesehatan Mental</h5>
-                                                        <p class="card-text">
-                                                            Memang untuk membuat dekorasi rumah bagi sebagian orang merupakan hal yang rumit, begitupun menurut saya.
-                                                        </p>
-                                                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md">
-                                        <div class="card mb-3">
-                                            <div class="row g-0">
-                                                <div class="col-md-8">
-                                                    <div class="card-body">
-                                                        <h5 class="card-title">Manfaat Buah Alpukat</h5>
-                                                        <p class="card-text">
-                                                            Alpukat dipercaya dapat membuat wajah seseorang dapat terlihat muda 10 tahun, apabila di konsumsi ketika 10 tahun yang lalu.
-                                                        </p>
-                                                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <img class="card-img card-img-right" src="tema/assets/img/elements/17.jpg" alt="Card image" />
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+
                         </div>
                     </div>
+                    <!-- / Content -->
+
+                    <!-- Footer -->
+                    <footer class="content-footer footer bg-footer-theme">
+                        <div class="container-xxl d-flex flex-wrap justify-content-between py-2 flex-md-row flex-column">
+                            <div class="mb-2 mb-md-0">
+                                ©
+                                <script>
+                                    document.write(new Date().getFullYear());
+                                </script>
+                                , made with ❤️ by
+                                <a href="https://github.com/zonewanz" target="_blank" class="footer-link fw-bolder">Oren's Solution</a>
+                            </div>
+
+                        </div>
+                    </footer>
+                    <!-- / Footer -->
+
+                    <div class="content-backdrop fade"></div>
                 </div>
-
-                <!-- / Content -->
-
-                <!-- Footer -->
-                <footer class="content-footer footer bg-footer-theme">
-                    <div class="container-xxl d-flex flex-wrap justify-content-between py-2 flex-md-row flex-column">
-                        <div class="mb-2 mb-md-0">
-                            ©
-                            <script>
-                                document.write(new Date().getFullYear());
-                            </script>
-                            , made with ❤️ by
-                            <a href="https://github.com/zonewanz" target="_blank" class="footer-link fw-bolder">Oren's Solution</a>
-                        </div>
-
-                    </div>
-                </footer>
-                <!-- / Footer -->
-
-                <div class="content-backdrop fade"></div>
+                <!-- Content wrapper -->
             </div>
-            <!-- Content wrapper -->
+            <!-- / Layout page -->
         </div>
-        <!-- / Layout page -->
-    </div>
 
-    <!-- Overlay -->
-    <div class="layout-overlay layout-menu-toggle"></div>
+        <!-- Overlay -->
+        <div class="layout-overlay layout-menu-toggle"></div>
     </div>
     <!-- / Layout wrapper -->
 
@@ -328,9 +318,19 @@
 
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
-
     <script src="tema/assets/sweetalert2/dist/sweetalert2.all.min.js"></script>
-    <?php if (session()->getFlashdata('berhasil')) { ?>
+    <script src="tema/assets/datatables.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#table-1').DataTable({
+                "paging": true,
+                "ordering": true,
+                "info": true
+            });
+        });
+    </script>
+
+    <?php if (session()->getFlashdata('simpan_catatan')) { ?>
         <script>
             const Toast = Swal.mixin({
                 toast: true,
@@ -346,7 +346,7 @@
 
             Toast.fire({
                 icon: 'success',
-                title: 'Login Berhasil!'
+                title: 'Hore, Catatan Berhasil Disimpan!'
             })
         </script>
     <?php } ?>
