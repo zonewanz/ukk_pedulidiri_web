@@ -28,7 +28,7 @@
 
     <!-- Vendors CSS -->
     <link rel="stylesheet" href="tema/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
-
+    <link rel="stylesheet" href="tema/assets/sweetalert2/dist/sweetalert2.min.css">
     <!-- Page CSS -->
     <!-- Page -->
     <link rel="stylesheet" href="tema/assets/vendor/css/pages/page-auth.css" />
@@ -93,10 +93,10 @@
                         <h4 class="mb-2">Selamat Datang di Aplikasi PeduliDiri 👋</h4>
                         <p class="mb-4">Silahkan Login untuk memulai aplikasi</p>
 
-                        <form id="formAuthentication" class="mb-3" action="index.html" method="POST">
+                        <form id="formAuthentication" class="mb-3" action="auth_login" method="POST">
                             <div class="mb-3">
-                                <label for="email" class="form-label">Username</label>
-                                <input type="text" class="form-control" id="email" name="username" placeholder="username" autofocus />
+                                <label for="email" class="form-label">NIK</label>
+                                <input type="number" class="form-control" id="nik" name="nik" placeholder="NIK" autofocus />
                             </div>
                             <div class="mb-3 form-password-toggle">
                                 <div class="d-flex justify-content-between">
@@ -150,6 +150,29 @@
 
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <script src="tema/assets/sweetalert2/dist/sweetalert2.all.min.js"></script>
+    <?php if (session()->getFlashdata('pendaftaran')) { ?>
+        <script>
+            Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'Pendaftaranmu Berhasil, Silahkan Login!',
+                showConfirmButton: false,
+                timer: 1500
+            })
+        </script>
+    <?php } ?>
+    <?php if (session()->getFlashdata('failed')) { ?>
+        <script>
+            Swal.fire({
+                position: 'center',
+                icon: 'error',
+                title: 'Username atau Password Salah!',
+                showConfirmButton: false,
+                timer: 1500
+            })
+        </script>
+    <?php } ?>
 </body>
 
 </html>

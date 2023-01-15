@@ -34,7 +34,7 @@
     <link rel="stylesheet" href="tema/assets/vendor/css/pages/page-auth.css" />
     <!-- Helpers -->
     <script src="tema/assets/vendor/js/helpers.js"></script>
-
+    <link rel="stylesheet" href="tema/assets/sweetalert2/dist/sweetalert2.min.css">
     <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
     <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
     <script src="tema/assets/js/config.js"></script>
@@ -86,45 +86,37 @@
                                         </g>
                                     </svg>
                                 </span>
-                                <span class="app-brand-text demo text-body fw-bolder">Sneat</span>
+                                <span class="app-brand-text demo text-body fw-bolder">pedulidiri</span>
                             </a>
                         </div>
                         <!-- /Logo -->
-                        <h4 class="mb-2">Adventure starts here 🚀</h4>
-                        <p class="mb-4">Make your app management easy and fun!</p>
+                        <h4 class="mb-2">Jelajahi bergam fitur menarik 🚀</h4>
+                        <p class="mb-4">bersama PeduliDiri!</p>
 
-                        <form id="formAuthentication" class="mb-3" action="index.html" method="POST">
+                        <form id="formAuthentication" class="mb-3" action="proses_register" method="POST">
                             <div class="mb-3">
-                                <label for="username" class="form-label">Username</label>
-                                <input type="text" class="form-control" id="username" name="username" placeholder="Enter your username" autofocus />
+                                <label for="NIK" class="form-label">NIK</label>
+                                <input type="number" class="form-control" id="nik" name="nik" placeholder="NIK" autofocus required />
                             </div>
                             <div class="mb-3">
-                                <label for="email" class="form-label">Email</label>
-                                <input type="text" class="form-control" id="email" name="email" placeholder="Enter your email" />
+                                <label for="nama" class="form-label">Nama Lengkap</label>
+                                <input type="text" class="form-control" id="nama" name="nama" placeholder="Nama Lengkap" required />
                             </div>
                             <div class="mb-3 form-password-toggle">
                                 <label class="form-label" for="password">Password</label>
                                 <div class="input-group input-group-merge">
-                                    <input type="password" id="password" class="form-control" name="password" placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;" aria-describedby="password" />
+                                    <input type="password" id="password" class="form-control" name="password" placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;" aria-describedby="password" required />
                                     <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
                                 </div>
                             </div>
 
-                            <div class="mb-3">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="terms-conditions" name="terms" />
-                                    <label class="form-check-label" for="terms-conditions">
-                                        I agree to
-                                        <a href="javascript:void(0);">privacy policy & terms</a>
-                                    </label>
-                                </div>
-                            </div>
-                            <button class="btn btn-primary d-grid w-100">Sign up</button>
+
+                            <input type="submit" class="btn btn-primary d-grid w-100" value="Daftar" name="daftar">
                         </form>
 
                         <p class="text-center">
                             <span>Sudah Punya Akun?</span>
-                            <a href="<?php base_url('home') ?>">
+                            <a href="/">
                                 <span>Login Disini</span>
                             </a>
                         </p>
@@ -157,6 +149,18 @@
 
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <script src="tema/assets/sweetalert2/dist/sweetalert2.all.min.js"></script>
+    <?php if (session()->getFlashdata('gagal')) { ?>
+        <script>
+            Swal.fire({
+                position: 'center',
+                icon: 'error',
+                title: 'Maaf, Akun Sudah Terdaftar!',
+                showConfirmButton: false,
+                timer: 1500
+            })
+        </script>
+    <?php } ?>
 </body>
 
 </html>
