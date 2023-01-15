@@ -10,3 +10,9 @@ Aplikasi ini dibangun dengan menggunakan Framework CodeIgniter 4, dengan berdasa
 
 notes:<br>
 app ini belum dibuat dinamis ya, masih manual untuk bebagai tampilannya, besok besok kita update lagi.
+
+<h3>Preview Aplikasi PeduliDiri Berbasis Web</h3>
+<p>Login</p>
+![image.png]( {https://github.com/zonewanz/ukk_pedulidiri_web/blob/main/dokumentasi/Login.png} )
+<br>
+<p>Register</p>
