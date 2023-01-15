@@ -13,6 +13,16 @@ app ini belum dibuat dinamis ya, masih manual untuk bebagai tampilannya, besok b
 
 <h3>Preview Aplikasi PeduliDiri Berbasis Web</h3>
 <p>Login</p>
-![image.png]( {https://github.com/zonewanz/ukk_pedulidiri_web/blob/main/dokumentasi/Login.png} )
-<br>
+<img src="https://github.com/zonewanz/ukk_pedulidiri_web/blob/main/dokumentasi/Login.png">
+
 <p>Register</p>
+<img src="https://github.com/zonewanz/ukk_pedulidiri_web/blob/main/dokumentasi/Register.png">
+
+<p>Dashboard</p>
+<img src="https://github.com/zonewanz/ukk_pedulidiri_web/blob/main/dokumentasi/Dashboard.png">
+
+<p>Menulis Catatan</p>
+<img src="https://github.com/zonewanz/ukk_pedulidiri_web/blob/main/dokumentasi/Catatan.png">
+
+<p>Riwayat Perjalanan</p>
+<img src="https://github.com/zonewanz/ukk_pedulidiri_web/blob/main/dokumentasi/RIwayat.png">
